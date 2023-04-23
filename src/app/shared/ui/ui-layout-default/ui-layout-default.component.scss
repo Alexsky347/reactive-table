@@ -1,0 +1,19 @@
+nav {
+  height: 60px;
+  width: 100%;
+  background: var(--primary);
+  margin-bottom: 10px;
+
+  .hamburger {
+    cursor: pointer;
+    padding: 20px;
+  }
+
+  .icon-bar {
+    width: 22px;
+    height: 2px;
+    background: var(--surface);
+    margin: 3px;
+    position: relative;
+  }
+}

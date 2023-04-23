@@ -1,0 +1,19 @@
+mat-table {
+  width: 100%;
+}
+
+section {
+  padding-bottom: 16px;
+}
+
+.table-action-btn {
+  display: flex;
+  flex-direction: row;
+  right: 0;
+  padding: 20px;
+}
+
+th {
+  background: var(--primary) !important;
+  color: var(--surface) !important;
+}

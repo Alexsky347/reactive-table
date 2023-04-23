@@ -1,0 +1,10 @@
+<nav>
+  <div (click)="openSideNav()" class="hamburger">
+    <div class="icon-bar" [@hamburguerX]="isOpen ? 'hamburguer' : 'topX'"></div>
+    <div class="icon-bar" [@hamburguerX]="isOpen ? 'hamburguer' : 'hide'"></div>
+    <div
+      class="icon-bar"
+      [@hamburguerX]="isOpen ? 'hamburguer' : 'bottomX'"
+    ></div>
+  </div>
+</nav>

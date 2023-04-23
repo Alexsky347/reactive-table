@@ -1,0 +1,43 @@
+<div class="dialog-container">
+  <h1 mat-dialog-title>Add new Item</h1>
+  <mat-dialog-content class="dialog-content">
+    <form [formGroup]="myForm" id="myForm">
+      <div *ngFor="let key of properties | objectKeys">
+        <mat-form-field class="dialog-form-field">
+          <mat-label>{{ key | titlecase }}</mat-label>
+          <ng-container [ngSwitch]="properties[key].type">
+            <input
+              matInput
+              *ngSwitchCase="'string'"
+              [id]="key"
+              [formControlName]="key"
+              type="text"
+            />
+            <input
+              matInput
+              *ngSwitchCase="'number'"
+              [id]="key"
+              [formControlName]="key"
+              type="number"
+            />
+          </ng-container>
+        </mat-form-field>
+        <mat-error *ngIf="myForm.get(key)?.hasError('required')">
+          Required
+        </mat-error>
+        <mat-error *ngIf="myForm.get(key)?.hasError('invalid')">
+          Invalid
+        </mat-error>
+        <mat-error *ngIf="myForm.get(key)?.hasError('minlength')">
+          Invalid
+        </mat-error>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center" class="dialog-action">
+    <app-ui-btn mat-button mat-dialog-close="true">Cancel</app-ui-btn>
+    <app-ui-btn mat-button [disabled]="myForm.invalid" (click)="submitMyForm()"
+      >Send</app-ui-btn
+    >
+  </mat-dialog-actions>
+</div>
