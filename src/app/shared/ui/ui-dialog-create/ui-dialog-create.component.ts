@@ -20,15 +20,20 @@ export class UiDialogCreateComponent {
   action: 'create' | 'update' = 'create';
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { name: string, obj: Record<string, unknown> },
+    @Inject(MAT_DIALOG_DATA)
+    public data: { name: string; obj: Record<string, unknown> },
     private dialogRef: MatDialogRef<UiDialogCreateComponent>
   ) {
     const mainKey = this.data.name.replace('/', '').trim();
     this.properties = this.schema[mainKey];
     this.obj = this.data.obj;
-    this.obj ? this.myForm = this.formBuilder.buildForm(this.properties, this.obj): this.myForm = this.formBuilder.buildForm(this.properties);
 
-
+    if (this.obj) {
+      this.myForm = this.formBuilder.buildForm(this.properties, this.obj);
+      this.action = 'update';
+    } else {
+      this.myForm = this.formBuilder.buildForm(this.properties);
+    }
   }
 
   /**
@@ -37,7 +42,7 @@ export class UiDialogCreateComponent {
   submitMyForm() {
     if (this.myForm.valid) {
       this.close();
-    } else{
+    } else {
       // TODO toast
     }
   }

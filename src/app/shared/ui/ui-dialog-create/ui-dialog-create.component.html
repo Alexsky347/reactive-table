@@ -1,5 +1,5 @@
 <div class="dialog-container">
-  <h1 mat-dialog-title>Add new Item</h1>
+  <h1 mat-dialog-title>{{action | titlecase}} item</h1>
   <mat-dialog-content class="dialog-content">
     <form [formGroup]="myForm" id="myForm">
       <div *ngFor="let key of properties | objectKeys">
