@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,15 @@ $table-base-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$table-base-theme: mat.define-light-theme((
-  color: (
-    primary: $table-base-primary,
-    accent: $table-base-accent,
-    warn: $table-base-warn,
+$table-base-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $table-base-primary,
+      accent: $table-base-accent,
+      warn: $table-base-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -35,19 +36,50 @@ $table-base-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 :root {
   --primary: #5468ff;
   --primary-light: #5adaff;
   --primary-dark: #3c4fe0;
   --accent: #e91e63;
-  --warn: #f44336;
+  --warn: #b29b02;
   --edit: #ff9800;
   --surface: #fff;
+  --success: #43a446;
 }
 
-mat-icon{
+/* mat-icon */
+mat-icon {
   cursor: pointer;
+}
+
+/* snackbar */
+
+.mat-mdc-snack-bar-container {
+  --mat-mdc-snack-bar-button-color: #ffffff;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+
+  &.snackbar-error {
+    --mdc-snackbar-container-color: var(--accent);
+  }
+
+  &.snackbar-success {
+    --mdc-snackbar-container-color: var(--success);
+  }
+
+  &.snackbar-info {
+    --mdc-snackbar-container-color: var(--primary);
+  }
+
+  &.snackbar-warning {
+    --mdc-snackbar-container-color: var(--warn);
+  }
 }

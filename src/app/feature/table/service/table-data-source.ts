@@ -8,7 +8,6 @@ import {
   timeout,
 } from 'rxjs';
 import { DataSource } from '@angular/cdk/collections';
-import { ApiService } from 'src/app/core/services/api.service';
 import { HobbiesService } from 'src/app/core/services/hobbies.service';
 import { ItHobby, ItHobbyCollection } from 'src/app/core/interface/it-hobby';
 
@@ -76,7 +75,7 @@ export class TableDataSource extends DataSource<ItHobby> {
    * @param hobby
    */
    removeElementToDataSource = <T>(id: string|number, uri: string): void => {
-    this.hobbiesService.delete(id, uri).subscribe(() => {
+    this.hobbiesService.deleteHobbies(id, uri).subscribe(() => {
       this.dataSubject.next(this.dataSubject.value.filter(h => h.id !== id))
     });
   };

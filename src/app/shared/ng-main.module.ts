@@ -15,6 +15,7 @@ import { HobbiesService } from 'src/app/core/services/hobbies.service';
 import { ItHobby } from 'src/app/core/interface/it-hobby';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -28,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
     // CdkTableModule,
     MatDialogModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
   exports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatDialogModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
 })
 export class NgMainModule {}

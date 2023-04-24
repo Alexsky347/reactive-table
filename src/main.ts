@@ -16,6 +16,10 @@ import {
 } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { NgMainModule } from './app/shared/ng-main.module';
+import { UtilsModule } from './app/shared/utils.module';
+
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -26,7 +30,9 @@ bootstrapApplication(AppComponent, {
         level: NgxLoggerLevel.TRACE,
         disableConsoleLogging: false,
         serverLogLevel: NgxLoggerLevel.ERROR,
-      })
+      }),
+      NgMainModule,
+      UtilsModule
       // StoreModule.forRoot(reducer),
       // EffectsModule.forRoot(),
       // StoreDevtoolsModule.instrument(),
@@ -38,6 +44,6 @@ bootstrapApplication(AppComponent, {
     // },
     provideAnimations(),
     provideHttpClient(withInterceptorsFromDi()),
-    provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
+    provideRouter(APP_ROUTES, withPreloading(PreloadAllModules))
   ],
 }).catch((err) => console.error(err));

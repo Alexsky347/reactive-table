@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ToastService } from './utils/toast.service';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
+  providers:[
+    ToastService
+  ],
   imports: [
-    CommonModule
+  ],
+  exports:[
   ]
 })
 export class UtilsModule { }

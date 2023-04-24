@@ -13,10 +13,11 @@ import { tap } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 import { HobbiesService } from 'src/app/core/services/hobbies.service';
 import { ItHobby } from 'src/app/core/interface/it-hobby';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { UiDialogCreateComponent } from 'src/app/shared/ui/ui-dialog-create/ui-dialog-create.component';
 import { UiModule } from 'src/app/shared/ui.module';
 import { NgMainModule } from 'src/app/shared/ng-main.module';
+import { UtilsModule } from 'src/app/shared/utils.module';
 
 @Component({
   selector: 'app-table',

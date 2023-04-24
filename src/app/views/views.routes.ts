@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { AuthorizedGuard } from '../core/guard/authorized.guard';
-import { inject } from '@angular/core';
 
 export const VIEWS_ROUTES: Routes = [
   {

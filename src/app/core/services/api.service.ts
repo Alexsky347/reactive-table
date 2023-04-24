@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
+import { ToastService } from '../../shared/utils/toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,7 @@ export class ApiService {
   private API = 'http://localhost:3000';
   private logger = inject(NGXLogger);
   http = inject(HttpClient);
+  toast = inject(ToastService);
 
   constructor() {}
 
@@ -36,29 +38,29 @@ export class ApiService {
       .pipe(catchError(this.handleError));
   }
 
-   /**
+  /**
    * @description Create
    * @param body
    * @param uri
    * @returns
    */
-   edit<T>(body: T, uri: string) {
+  edit<T>(body: T, uri: string) {
     return this.http
       .put<T>(`${this.API + uri}`, body)
       .pipe(catchError(this.handleError));
   }
 
-    /**
+  /**
    * @description Delete
    * @param body
    * @param uri
    * @returns
    */
-    delete<T>(id: T, uri: string) {
-      return this.http
-        .delete<T>(`${this.API + uri}/${id}`)
-        .pipe(catchError(this.handleError));
-    }
+  delete<T>(id: T, uri: string) {
+    return this.http
+      .delete<T>(`${this.API + uri}/${id}`)
+      .pipe(catchError(this.handleError));
+  }
 
   private handleError = (error: HttpErrorResponse) => {
     if (error.status === 0) {
@@ -73,8 +75,9 @@ export class ApiService {
       );
     }
     // Return an observable with a user-facing error message.
-    return throwError(
-      () => new Error('Something bad happened; please try again later.')
-    );
+    return throwError(() => {
+      this.toast.error('Something bad happened; please try again later.');
+      new Error('Something bad happened; please try again later.');
+    });
   };
 }
