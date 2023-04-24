@@ -1,7 +1,7 @@
 import { Component, Inject, inject } from '@angular/core';
 import * as jsonData from '../../../../assets/config/config.json';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {  FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { FormBuilderService } from 'src/app/core/services/form-builder.service';
 import { ItSchemaMain } from 'src/app/core/interface/it-schema';
 

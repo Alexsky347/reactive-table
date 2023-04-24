@@ -1,2 +1,12 @@
 https://gist.github.com/jhades/9cdcff38c5f5092069363ddf69bda5bf#file-22-ts
 https://blog.angular-university.io/angular-material-data-table/
+
+
+TODO
+
+sidenav
+home -> projects
+xp -> xp
+hobbies -> hobbies
+finish login
+

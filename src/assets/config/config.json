@@ -1,7 +1,6 @@
 {
   "hobbies":{
     "name":{ "type":"string", "required":true },
-    "description":{ "type":"string", "required":true },
     "weight":{ "type":"number", "required":true },
     "symbol":{ "type":"string" }
   },

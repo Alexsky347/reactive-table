@@ -57,8 +57,7 @@
       "id": 14
     },
     {
-      "name": "ss",
-      "description": "ss",
+      "name": "sse",
       "weight": 147,
       "symbol": null,
       "id": 17
@@ -72,10 +71,15 @@
     },
     {
       "name": "er",
-      "description": "er",
       "weight": 147,
       "symbol": null,
       "id": 19
+    },
+    {
+      "name": "e",
+      "weight": 14,
+      "symbol": "e",
+      "id": 20
     }
   ]
 }
