@@ -29,7 +29,6 @@ import { NgMainModule } from 'src/app/shared/ng-main.module';
 export class TableComponent implements AfterViewInit, OnInit {
   data!: ItHobby;
   dataSource!: TableDataSource;
-  displayedColumns = ['id', 'name', 'weight', 'symbol', 'actions'];
   URI = '/hobbies';
   paginatorEvent = new BehaviorSubject<PageEvent>({} as PageEvent);
 

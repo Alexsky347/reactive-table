@@ -17,8 +17,11 @@ export class TableDataSource extends DataSource<ItHobby> {
   private dataSubject = new BehaviorSubject<ItHobbyCollection>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
+
   public dataCount = 0;
   public offset = 10;
+  public displayedColumns! : string[];
+  private actionName = 'actions';
 
   constructor(private hobbiesService: HobbiesService) {
     super();
@@ -76,6 +79,7 @@ export class TableDataSource extends DataSource<ItHobby> {
       )
       .subscribe(([hobbies, count]) => {
         this.dataSubject.next(hobbies);
+        this.displayedColumns = [...Object.keys(hobbies[0]), this.actionName];
         if (Array.isArray(count) && count?.length) {
           this.dataCount = count.length;
         }
