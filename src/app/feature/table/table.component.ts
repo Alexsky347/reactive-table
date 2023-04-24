@@ -5,26 +5,18 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { inject } from '@angular/core';
 import { TableDataSource } from './service/table-data-source';
-import { MatTableModule } from '@angular/material/table';
-import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ApiService } from 'src/app/core/services/api.service';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs';
-import { LoggerService } from 'angular-auth-oidc-client/lib/logging/logger.service';
 import { NGXLogger } from 'ngx-logger';
-import { CommonModule } from '@angular/common';
-import { CdkTableModule } from '@angular/cdk/table';
 import { HobbiesService } from 'src/app/core/services/hobbies.service';
-import { UiBtnComponent } from 'src/app/shared/ui/ui-btn/ui-btn.component';
 import { ItHobby } from 'src/app/core/interface/it-hobby';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { UiDialogCreateComponent } from 'src/app/shared/ui/ui-dialog-create/ui-dialog-create.component';
-import { MatIconModule } from '@angular/material/icon';
-import { UiBtnIconComponent } from 'src/app/shared/ui/ui-btn-icon/ui-btn-icon.component';
+import { UiModule } from 'src/app/shared/ui.module';
+import { NgMainModule } from 'src/app/shared/ng-main.module';
 
 @Component({
   selector: 'app-table',
@@ -32,16 +24,8 @@ import { UiBtnIconComponent } from 'src/app/shared/ui/ui-btn-icon/ui-btn-icon.co
   styleUrls: ['./table.component.scss'],
   standalone: true,
   imports: [
-    MatTableModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    CommonModule,
-    // CdkTableModule,
-    UiBtnComponent,
-    MatDialogModule,
-    MatIconModule,
-    UiBtnIconComponent,
+    NgMainModule,
+    UiModule,
   ],
   // encapsulation: ViewEncapsulation.None,
 })

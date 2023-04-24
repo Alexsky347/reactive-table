@@ -11,7 +11,6 @@ import {
   selector: 'app-ui-layout-default',
   templateUrl: './ui-layout-default.component.html',
   styleUrls: ['./ui-layout-default.component.scss'],
-  standalone: true,
   animations: [
     trigger('hamburguerX', [
       /*

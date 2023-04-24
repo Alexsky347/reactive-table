@@ -1,29 +1,15 @@
 import { Component, Inject, inject } from '@angular/core';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { UiBtnComponent } from '../ui-btn/ui-btn.component';
 import * as jsonData from '../../../../assets/config/config.json';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormBuilderService } from 'src/app/core/services/form-builder.service';
 import { ItSchemaMain } from 'src/app/core/interface/it-schema';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ObjectKeysPipe } from 'src/app/core/pipe/object-keys.pipe';
-import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-ui-dialog-create',
   templateUrl: './ui-dialog-create.component.html',
   styleUrls: ['./ui-dialog-create.component.scss'],
-  standalone: true,
-  imports: [
-    MatDialogModule,
-    UiBtnComponent,
-    ReactiveFormsModule,
-    CommonModule,
-    ObjectKeysPipe,
-    MatInputModule,
-  ],
 })
 export class UiDialogCreateComponent {
   schema: Record<string, ItSchemaMain> = jsonData;
