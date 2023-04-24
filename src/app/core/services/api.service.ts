@@ -9,8 +9,11 @@ import { ToastService } from '../../shared/utils/toast.service';
 })
 export class ApiService {
   private API = 'http://localhost:3000';
+
   private logger = inject(NGXLogger);
+
   http = inject(HttpClient);
+
   toast = inject(ToastService);
 
   constructor() {}

@@ -11,16 +11,20 @@ import {
 import { DataSource } from '@angular/cdk/collections';
 import { HobbiesService } from 'src/app/core/services/hobbies.service';
 import { ItHobby, ItHobbyCollection } from 'src/app/core/interface/it-hobby';
-import { PageEvent } from '@angular/material/paginator';
 
 export class TableDataSource extends DataSource<ItHobby> {
   private dataSubject = new BehaviorSubject<ItHobbyCollection>([]);
+
   private loadingSubject = new BehaviorSubject<boolean>(false);
+
   public loading$ = this.loadingSubject.asObservable();
 
   public dataCount = 0;
+
   public offset = 10;
+
   public displayedColumns! : string[];
+
   private actionName = 'actions';
 
   constructor(private hobbiesService: HobbiesService) {

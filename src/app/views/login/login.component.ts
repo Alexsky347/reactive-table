@@ -16,8 +16,11 @@ import { ObjectKeysPipe } from "../../core/pipe/object-keys.pipe";
 })
 export class LoginComponent {
   schema: Record<string, ItSchemaMain> = jsonData;
+
   properties!: ItSchemaMain;
+
   loginForm!: FormGroup;
+
   formBuilder = inject(FormBuilderService);
 
   constructor() {

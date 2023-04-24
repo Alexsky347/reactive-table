@@ -52,6 +52,7 @@ import {
 export class UiLayoutDefaultComponent {
 
   isOpen = true;
+
   openSideNav() {
     this.isOpen = !this.isOpen;
   }

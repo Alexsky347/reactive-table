@@ -1,5 +1,3 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { importProvidersFrom } from '@angular/core';
 import { AppComponent } from './app/app.component';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
@@ -16,7 +14,6 @@ import {
 } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { ToastrModule } from 'ngx-toastr';
 import { NgMainModule } from './app/shared/ng-main.module';
 import { UtilsModule } from './app/shared/utils.module';
 

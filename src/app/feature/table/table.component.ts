@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { TableDataSource } from './service/table-data-source';
 import { MatSort } from '@angular/material/sort';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import {  PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, tap } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
@@ -24,12 +24,14 @@ import { NgMainModule } from 'src/app/shared/ng-main.module';
   styleUrls: ['./table.component.scss'],
   standalone: true,
   imports: [NgMainModule, UiModule],
-  // encapsulation: ViewEncapsulation.None,
 })
 export class TableComponent implements AfterViewInit, OnInit {
   data!: ItHobby;
+
   dataSource!: TableDataSource;
+
   URI = '/hobbies';
+
   paginatorEvent = new BehaviorSubject<PageEvent>({} as PageEvent);
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -44,9 +46,9 @@ export class TableComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.logger.trace(
       'this.route.snapshot.data["data"]',
-      this.route.snapshot.data['data']
+      this.route.snapshot.data.data
     );
-    this.data = this.route.snapshot.data['data'] ?? 0;
+    this.data = this.route.snapshot.data.data ?? 0;
     this.dataSource = new TableDataSource(this.hobbiesService);
     this.dataSource.loadHobbies(1);
   }
@@ -110,7 +112,7 @@ export class TableComponent implements AfterViewInit, OnInit {
    */
   editHobby<T>(obj: T) {
     // @ts-ignore
-    const id = obj['id'];
+    const id = obj.id;
     this.openDialog(obj).subscribe((result) => {
       if (result?.state && result?.data) {
         const nResult = { ...result.data };

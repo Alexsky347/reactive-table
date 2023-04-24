@@ -1,25 +1,16 @@
 import { NgModule } from '@angular/core';
-import { inject } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ApiService } from 'src/app/core/services/api.service';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
-import { tap } from 'rxjs';
-import { LoggerService } from 'angular-auth-oidc-client/lib/logging/logger.service';
-import { NGXLogger } from 'ngx-logger';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
-import { CdkTableModule } from '@angular/cdk/table';
-import { HobbiesService } from 'src/app/core/services/hobbies.service';
-import { ItHobby } from 'src/app/core/interface/it-hobby';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -37,7 +28,7 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
   ],
   exports: [
     CommonModule,
@@ -52,7 +43,7 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
   ],
 })
 export class NgMainModule {}

@@ -12,10 +12,15 @@ import { ItSchemaMain } from 'src/app/core/interface/it-schema';
 })
 export class UiDialogCreateComponent {
   schema: Record<string, ItSchemaMain> = jsonData;
+
   properties: ItSchemaMain;
+
   myForm!: FormGroup;
+
   formBuilder = inject(FormBuilderService);
+
   obj: Record<string, unknown> = {};
+
   action: 'create' | 'update' = 'create';
 
   constructor(

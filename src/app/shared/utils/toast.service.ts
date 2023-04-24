@@ -3,7 +3,6 @@ import {
   MatSnackBar,
   MatSnackBarConfig,
   MatSnackBarHorizontalPosition,
-  MatSnackBarRef,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
@@ -12,9 +11,11 @@ import {
 })
 export class ToastService {
   snackBarConfig!: MatSnackBarConfig;
-  snackBarRef!: MatSnackBarRef<any>;
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
   snackBarAutoHide = '3500';
 
   snackBar = inject(MatSnackBar);

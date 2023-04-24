@@ -11,6 +11,7 @@ describe('IsLoggedInterceptor', () => {
 
   it('should be created', () => {
     const interceptor: IsLoggedInterceptor = TestBed.inject(IsLoggedInterceptor);
+
     expect(interceptor).toBeTruthy();
   });
 });
