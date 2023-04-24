@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
     selector: 'app-ui-pagination',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class UiPaginationComponent {
 
+  @Input()length!: number;
+  @Output()pageEvent = new EventEmitter<PageEvent>();
+  constructor() {}
+
+  /**
+   *
+   * @param event PageEvent
+   */
+  loadPage(event: PageEvent){
+    this.pageEvent.emit(event);
+  }
 }

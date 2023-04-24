@@ -20,9 +20,10 @@ export class ApiService {
    * @param uri
    * @returns
    */
-  findAll<T>(uri: string) {
+  findAll<T>(uri: string, pageNumber?: number, pageSize?: number) {
+
     return this.http
-      .get<T>(`${this.API + uri}`)
+      .get<T>(`${this.API + uri}/?_page=${pageNumber}&_limit=${pageSize}`)
       .pipe(catchError(this.handleError));
   }
 

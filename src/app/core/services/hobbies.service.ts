@@ -19,9 +19,9 @@ export class HobbiesService extends ApiService{
    * @returns Observable<ItDataTable[]>
    */
   findHobbies(courseId:number, filter = '', sortOrder = 'asc',
-  pageNumber = 0, pageSize = 3, uri: string) {
+  pageNumber = 0, pageSize = 10, uri: string) {
 
-    return this.findAll<ItHobbyCollection>(uri);
+    return this.findAll<ItHobbyCollection>(uri, pageNumber, pageSize);
   }
 
   /**

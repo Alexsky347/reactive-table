@@ -7,9 +7,9 @@ import {
 } from '@angular/core';
 import { TableDataSource } from './service/table-data-source';
 import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
-import { tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 import { HobbiesService } from 'src/app/core/services/hobbies.service';
 import { ItHobby } from 'src/app/core/interface/it-hobby';
@@ -24,10 +24,7 @@ import { UtilsModule } from 'src/app/shared/utils.module';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   standalone: true,
-  imports: [
-    NgMainModule,
-    UiModule,
-  ],
+  imports: [NgMainModule, UiModule],
   // encapsulation: ViewEncapsulation.None,
 })
 export class TableComponent implements AfterViewInit, OnInit {
@@ -35,8 +32,8 @@ export class TableComponent implements AfterViewInit, OnInit {
   dataSource!: TableDataSource;
   displayedColumns = ['id', 'name', 'weight', 'symbol', 'actions'];
   URI = '/hobbies';
+  paginatorEvent = new BehaviorSubject<PageEvent>({} as PageEvent);
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
@@ -57,7 +54,7 @@ export class TableComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    this.paginator.page.pipe(tap(() => this.loadLessonsPage())).subscribe();
+    this.paginatorEvent.pipe(tap((paginator) => this.loadDataPage(paginator.pageIndex, paginator.pageSize))).subscribe();
   }
 
   /**
@@ -65,13 +62,14 @@ export class TableComponent implements AfterViewInit, OnInit {
    *
    * @memberof TableComponent
    */
-  loadLessonsPage() {
+  loadDataPage(pageIndex?: number, pageSize?: number) {
     this.dataSource.loadHobbies(
       this.data.id,
       '',
       'asc',
-      this.paginator.pageIndex,
-      this.paginator.pageSize
+      pageIndex,
+      pageSize,
+      this.URI
     );
   }
 
@@ -108,20 +106,27 @@ export class TableComponent implements AfterViewInit, OnInit {
     this.dataSource.removeElementToDataSource(id, this.URI);
   }
 
-/**
- *
- * @param obj
- */
+  /**
+   *
+   * @param obj
+   */
   editHobby<T>(obj: T) {
-    console.log(obj)
     // @ts-ignore
     const id = obj['id'];
     this.openDialog(obj).subscribe((result) => {
       if (result?.state && result?.data) {
-        const nResult = {...result.data}
+        const nResult = { ...result.data };
         this.dataSource.editElementToDataSource(nResult, `${this.URI}/${id}`);
       }
       this.logger.debug(`Dialog result: ${result}`);
-    })
+    });
+  }
+
+  /**
+   * Handle pagination event
+   * @param evt
+   */
+  paginate(evt: PageEvent) {
+    this.paginatorEvent.next(evt);
   }
 }
