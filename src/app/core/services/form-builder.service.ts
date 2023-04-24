@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ItSchema, ItSchemaMain } from '../interface/it-schema';
+import { ItSchemaMain } from '../interface/it-schema';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class FormBuilderService {
   /**
    * Build form
    * @param obj
+   * @param data
    * @returns
    */
   buildForm(obj: ItSchemaMain, data?: any): FormGroup {

@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, throwError } from 'rxjs';
+import { catchError, count, map, throwError } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 import { ToastService } from '../../shared/utils/toast.service';
 
@@ -21,9 +21,19 @@ export class ApiService {
    * @returns
    */
   findAll<T>(uri: string, pageNumber?: number, pageSize?: number) {
-
     return this.http
       .get<T>(`${this.API + uri}/?_page=${pageNumber}&_limit=${pageSize}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  /**
+   *@description Count all
+   * @param uri
+   * @returns
+   */
+  countAll<T>(uri: string) {
+    return this.http
+      .get<T>(`${this.API + uri}`)
       .pipe(catchError(this.handleError));
   }
 

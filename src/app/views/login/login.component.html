@@ -1,1 +1,44 @@
-<p>login works!</p>
+<section>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (submit)="submitMyForm()">
+        <div *ngFor="let key of properties | objectKeys">
+          <mat-form-field class="dialog-form-field">
+            <mat-label>{{ key | titlecase }}</mat-label>
+            <ng-container [ngSwitch]="properties[key].type">
+              <input
+                matInput
+                *ngSwitchCase="'string'"
+                [id]="key"
+                [formControlName]="key"
+                type="text"
+              />
+              <input
+                matInput
+                *ngSwitchCase="'number'"
+                [id]="key"
+                [formControlName]="key"
+                type="number"
+              />
+            </ng-container>
+          </mat-form-field>
+          <mat-error *ngIf="loginForm.get(key)?.hasError('required')">
+            Required
+          </mat-error>
+          <mat-error *ngIf="loginForm.get(key)?.hasError('invalid')">
+            Invalid
+          </mat-error>
+          <mat-error *ngIf="loginForm.get(key)?.hasError('minlength')">
+            Invalid
+          </mat-error>
+        </div>
+        <app-ui-btn type="submit">Login</app-ui-btn>
+      </form>
+    </mat-card-content>
+    <mat-card-actions> </mat-card-actions>
+  </mat-card>
+</section>

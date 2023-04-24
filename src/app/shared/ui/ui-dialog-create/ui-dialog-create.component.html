@@ -1,7 +1,7 @@
 <div class="dialog-container">
   <h1 mat-dialog-title>{{action | titlecase}} item</h1>
   <mat-dialog-content class="dialog-content">
-    <form [formGroup]="myForm" id="myForm">
+    <form [formGroup]="myForm">
       <div *ngFor="let key of properties | objectKeys">
         <mat-form-field class="dialog-form-field">
           <mat-label>{{ key | titlecase }}</mat-label>

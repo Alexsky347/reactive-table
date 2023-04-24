@@ -3,6 +3,7 @@ import {
   Observable,
   catchError,
   finalize,
+  forkJoin,
   from,
   of,
   timeout,
@@ -17,6 +18,7 @@ export class TableDataSource extends DataSource<ItHobby> {
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
   public dataCount = 0;
+  public offset = 10;
 
   constructor(private hobbiesService: HobbiesService) {
     super();
@@ -51,36 +53,44 @@ export class TableDataSource extends DataSource<ItHobby> {
     filter = '',
     sortDirection = 'asc',
     pageIndex = 0,
-    pageSize = 3,
+    pageSize = this.offset,
     uri = '/hobbies'
   ) => {
     this.loadingSubject.next(true);
-    this.hobbiesService
-      .findHobbies(id, filter, sortDirection, pageIndex, pageSize, uri)
+
+    const findHobbies$ = this.hobbiesService.findHobbies(
+      id,
+      filter,
+      sortDirection,
+      pageIndex,
+      pageSize,
+      uri
+    );
+
+    const countAll$ = this.hobbiesService.countAll(uri);
+
+    forkJoin([findHobbies$, countAll$])
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
       )
-      .subscribe((hobbies) => {
+      .subscribe(([hobbies, count]) => {
         this.dataSubject.next(hobbies);
-        this.dataCount = this.dataSubject.value.length;
+        if (Array.isArray(count) && count?.length) {
+          this.dataCount = count.length;
+        }
       });
   };
-
-
 
   /**
    * @description Add an element to the data source
    * @param hobby
    */
   addElementToDataSource = <T>(hobby: T, uri: string): void => {
-    this.hobbiesService
-      .addHobbies(hobby, uri)
-      .subscribe((hobby) =>{
-          this.dataSubject.next([...this.dataSubject.value, hobby as ItHobby]);
-          this.dataCount = this.dataSubject.value.length;
-        }
-      );
+    this.hobbiesService.addHobbies(hobby, uri).subscribe((hobby) => {
+      this.dataSubject.next([...this.dataSubject.value, hobby as ItHobby]);
+      this.dataCount ++;
+    });
   };
 
   /**
@@ -90,7 +100,7 @@ export class TableDataSource extends DataSource<ItHobby> {
   removeElementToDataSource = <T>(id: string | number, uri: string): void => {
     this.hobbiesService.deleteHobbies(id, uri).subscribe(() => {
       this.dataSubject.next(this.dataSubject.value.filter((h) => h.id !== id));
-      this.dataCount = this.dataSubject.value.length;
+      this.dataCount --;
     });
   };
 
@@ -105,7 +115,6 @@ export class TableDataSource extends DataSource<ItHobby> {
         (h) => h.id !== hobby.id
       );
       this.dataSubject.next([...dataFiltered, hobby as ItHobby]);
-      this.dataCount = this.dataSubject.value.length;
     });
   };
 }

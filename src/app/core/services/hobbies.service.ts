@@ -20,7 +20,6 @@ export class HobbiesService extends ApiService{
    */
   findHobbies(courseId:number, filter = '', sortOrder = 'asc',
   pageNumber = 0, pageSize = 10, uri: string) {
-
     return this.findAll<ItHobbyCollection>(uri, pageNumber, pageSize);
   }
 

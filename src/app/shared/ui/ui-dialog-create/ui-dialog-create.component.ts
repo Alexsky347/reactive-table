@@ -1,8 +1,7 @@
 import { Component, Inject, inject } from '@angular/core';
-import { UiBtnComponent } from '../ui-btn/ui-btn.component';
 import * as jsonData from '../../../../assets/config/config.json';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {  FormGroup } from '@angular/forms';
 import { FormBuilderService } from 'src/app/core/services/form-builder.service';
 import { ItSchemaMain } from 'src/app/core/interface/it-schema';
 
@@ -42,8 +41,6 @@ export class UiDialogCreateComponent {
   submitMyForm() {
     if (this.myForm.valid) {
       this.close();
-    } else {
-      // TODO toast
     }
   }
 

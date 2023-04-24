@@ -17,7 +17,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { UiDialogCreateComponent } from 'src/app/shared/ui/ui-dialog-create/ui-dialog-create.component';
 import { UiModule } from 'src/app/shared/ui.module';
 import { NgMainModule } from 'src/app/shared/ng-main.module';
-import { UtilsModule } from 'src/app/shared/utils.module';
 
 @Component({
   selector: 'app-table',
@@ -67,8 +66,8 @@ export class TableComponent implements AfterViewInit, OnInit {
       this.data.id,
       '',
       'asc',
-      pageIndex,
-      pageSize,
+      pageIndex ?? 0,
+      pageSize ?? this.dataSource.offset,
       this.URI
     );
   }

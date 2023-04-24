@@ -16,6 +16,10 @@ import { ItHobby } from 'src/app/core/interface/it-hobby';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -30,6 +34,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatIconModule,
     MatSnackBarModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule
   ],
   exports: [
     CommonModule,
@@ -41,6 +49,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatIconModule,
     MatSnackBarModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule
   ],
 })
 export class NgMainModule {}

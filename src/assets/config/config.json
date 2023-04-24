@@ -4,5 +4,9 @@
     "description":{ "type":"string", "required":true },
     "weight":{ "type":"number", "required":true },
     "symbol":{ "type":"string" }
+  },
+  "login":{
+    "username":{ "type":"string", "required":true },
+    "password":{ "type":"string", "required":true }
   }
 }

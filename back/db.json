@@ -57,13 +57,6 @@
       "id": 14
     },
     {
-      "name": "zz",
-      "description": "zz",
-      "weight": 147,
-      "symbol": null,
-      "id": 15
-    },
-    {
       "name": "rr",
       "description": "rr",
       "weight": 77,
@@ -76,6 +69,20 @@
       "weight": 147,
       "symbol": null,
       "id": 17
+    },
+    {
+      "name": "rr",
+      "description": "rr",
+      "weight": 47,
+      "symbol": null,
+      "id": 18
+    },
+    {
+      "name": "er",
+      "description": "er",
+      "weight": 147,
+      "symbol": null,
+      "id": 19
     }
   ]
 }
