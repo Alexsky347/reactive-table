@@ -13,14 +13,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
 @NgModule({
   declarations: [
     UiBtnComponent,
     UiBtnIconComponent,
     UiDialogCreateComponent,
     UiLayoutDefaultComponent,
-    UiPaginationComponent
+    UiPaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -30,14 +29,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ObjectKeysPipe,
     MatInputModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
-  exports:[
+  exports: [
     UiBtnComponent,
     UiBtnIconComponent,
     UiDialogCreateComponent,
     UiLayoutDefaultComponent,
-    UiPaginationComponent
-  ]
+    UiPaginationComponent,
+  ],
 })
-export class UiModule { }
+export class UiModule {}

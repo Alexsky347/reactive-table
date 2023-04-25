@@ -25,18 +25,12 @@
                 type="number"
               />
             </ng-container>
+            <mat-error *ngIf="loginForm.get(key)?.hasError('required')"> Required </mat-error>
+            <mat-error *ngIf="loginForm.get(key)?.hasError('invalid')"> Invalid </mat-error>
+            <mat-error *ngIf="loginForm.get(key)?.hasError('minlength')"> Invalid </mat-error>
           </mat-form-field>
-          <mat-error *ngIf="loginForm.get(key)?.hasError('required')">
-            Required
-          </mat-error>
-          <mat-error *ngIf="loginForm.get(key)?.hasError('invalid')">
-            Invalid
-          </mat-error>
-          <mat-error *ngIf="loginForm.get(key)?.hasError('minlength')">
-            Invalid
-          </mat-error>
         </div>
-        <app-ui-btn type="submit">Login</app-ui-btn>
+        <app-ui-btn type="submit" [disabled]="loginForm.invalid">Login</app-ui-btn>
       </form>
     </mat-card-content>
     <mat-card-actions> </mat-card-actions>

@@ -26,7 +26,7 @@ import { NgMainModule } from 'src/app/shared/ng-main.module';
   imports: [NgMainModule, UiModule],
 })
 export class TableComponent implements AfterViewInit, OnInit {
-  data!: ItHobby;
+  data!: number;
 
   dataSource!: TableDataSource;
 
@@ -46,9 +46,9 @@ export class TableComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.logger.trace(
       'this.route.snapshot.data["data"]',
-      this.route.snapshot.data.data
+      // this.route.snapshot.data.data
     );
-    this.data = this.route.snapshot.data.data ?? 0;
+    this.data = 0;
     this.dataSource = new TableDataSource(this.hobbiesService);
     this.dataSource.loadHobbies(1);
   }
@@ -64,7 +64,7 @@ export class TableComponent implements AfterViewInit, OnInit {
    */
   loadDataPage(pageIndex?: number, pageSize?: number) {
     this.dataSource.loadHobbies(
-      this.data.id,
+      1,
       '',
       'asc',
       pageIndex ?? 0,

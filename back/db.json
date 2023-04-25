@@ -80,6 +80,12 @@
       "weight": 14,
       "symbol": "e",
       "id": 20
+    },
+    {
+      "name": "ty",
+      "weight": 14,
+      "symbol": null,
+      "id": 21
     }
   ]
 }

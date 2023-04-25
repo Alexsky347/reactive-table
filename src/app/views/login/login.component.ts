@@ -33,6 +33,7 @@ export class LoginComponent {
   submitMyForm() {
     console.log(this.loginForm.value)
     if (this.loginForm.valid) {
+      console.log('Form Submitted! && valid');
     }
   }
 }
