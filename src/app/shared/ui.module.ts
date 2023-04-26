@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatInputModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule
   ],
   exports: [
     UiBtnComponent,
@@ -37,6 +39,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     UiDialogCreateComponent,
     UiLayoutDefaultComponent,
     UiPaginationComponent,
+    MatCheckboxModule
   ],
 })
 export class UiModule {}

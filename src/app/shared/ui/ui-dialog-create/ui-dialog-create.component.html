@@ -3,28 +3,20 @@
   <mat-dialog-content class="dialog-content">
     <form [formGroup]="myForm">
       <div *ngFor="let key of properties | objectKeys">
-        <mat-form-field class="dialog-form-field">
-          <mat-label>{{ key | titlecase }}</mat-label>
-          <ng-container [ngSwitch]="properties[key].type">
-            <input
-              matInput
-              *ngSwitchCase="'string'"
-              [id]="key"
-              [formControlName]="key"
-              type="text"
-            />
-            <input
-              matInput
-              *ngSwitchCase="'number'"
-              [id]="key"
-              [formControlName]="key"
-              type="number"
-            />
-          </ng-container>
-          <mat-error *ngIf="myForm.get(key)?.hasError('required')"> Required </mat-error>
-          <mat-error *ngIf="myForm.get(key)?.hasError('invalid')"> Invalid </mat-error>
-          <mat-error *ngIf="myForm.get(key)?.hasError('minlength')"> Invalid </mat-error>
-        </mat-form-field>
+        <ng-container [ngSwitch]="properties[key].type">
+          <mat-checkbox *ngSwitchCase="'boolean'" [id]="key" [formControlName]="key">
+            {{ key | titlecase }}</mat-checkbox
+          >
+          <mat-form-field *ngSwitchDefault class="dialog-form-field">
+            <div>
+              <mat-label>{{ key | titlecase }}</mat-label>
+              <input matInput [id]="key" [formControlName]="key" [type]="properties[key].type" />
+            </div>
+            <mat-error *ngIf="myForm.get(key)?.hasError('required')"> Required </mat-error>
+            <mat-error *ngIf="myForm.get(key)?.hasError('invalid')"> Invalid </mat-error>
+            <mat-error *ngIf="myForm.get(key)?.hasError('minlength')"> Invalid </mat-error>
+          </mat-form-field>
+        </ng-container>
       </div>
     </form>
   </mat-dialog-content>

@@ -4,8 +4,14 @@
     "weight":{ "type":"number", "required":true },
     "symbol":{ "type":"string" }
   },
+  "project":{
+    "name":{ "type":"string", "required":true },
+    "languages":{ "type":"array", "required":true },
+    "description":{ "type":"string" },
+    "isActive":{ "type":"boolean" , "required":true }
+  },
   "login":{
     "username":{ "type":"string", "required":true },
-    "password":{ "type":"string", "required":true }
+    "password":{ "type":"password", "required":true }
   }
 }
